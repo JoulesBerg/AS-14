@@ -149,6 +149,13 @@ public sealed partial class StationEventComponent : Component
     public Dictionary<ProtoId<JobPrototype>, int> RequiredJobs = new();
 
     /// <summary>
+    ///     AuroraSong: Allow EtationEvents to require ONE match from the RequiredJobsField instead of ALL
+    ///     e.g. Sergeant: 2 , Commissioner: 1 would allow the event if either 2 seargents are on, or 1 commissioner is on.
+    /// </summary>
+    [DataField]
+    public bool OneOfRequiredJobCounts = false;
+
+    /// <summary>
     ///     Frontier: Warning timer.
     /// </summary>
     [DataField]

@@ -99,6 +99,9 @@
     reoccurrenceDelay: 240 # 4 hours
     requiredJobs:
       Sergeant: 1
+      Lieutenant: 1
+      Commissioner: 1
+    oneOfRequiredJobCounts: true
     category: SLE
   - type: BluespaceErrorBountyRule
     includeGridValue: false
@@ -173,6 +176,9 @@
     reoccurrenceDelay: 120 # 2 hours
     requiredJobs:
       Sergeant: 1
+      Lieutenant: 1
+      Commissioner: 1
+    oneOfRequiredJobCounts: true
     category: SLE
   - type: BluespaceErrorBountyRule
     includeGridValue: false

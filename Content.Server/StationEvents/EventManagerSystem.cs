@@ -351,6 +351,24 @@ public sealed class EventManagerSystem : EntitySystem
             return false;
         }
 
+        // AuroraSong: only require one matching job count from the dict if OneOfRequiredJobCounts == true
+        if (stationEvent.OneOfRequiredJobCounts)
+        {
+            bool requirementsMet = false;
+            foreach (var (jobProtoId, numJobs) in stationEvent.RequiredJobs)
+            {
+                requirementsMet |= _jobs.GetNumberOfActiveRoles(jobProtoId, false) < numJobs;
+            }
+
+            if (!requirementsMet)
+            {
+                return false;
+            }
+        }
+        else
+        {
+        // I know this indentation is ugly, but it will make upstream merges easier to just not touch the indentation here.
+
         // Frontier: require jobs to run event
         foreach (var (jobProtoId, numJobs) in stationEvent.RequiredJobs)
         {
@@ -358,6 +376,9 @@ public sealed class EventManagerSystem : EntitySystem
                 return false;
         }
         // End Frontier
+
+        } 
+        // End AuroraSong
 
         if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd)
         {
