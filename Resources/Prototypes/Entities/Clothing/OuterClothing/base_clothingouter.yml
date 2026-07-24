@@ -52,6 +52,19 @@
 
 - type: entity
   abstract: true
+  parent: [SolutionFood, SolutionNormal, ClothingOuterStorageBase]
+  id: ClothingOuterStorageEdible
+  components:
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 60
+
+- type: entity
+  abstract: true
   parent: [RecyclableItemClothBasic, ClothingOuterStorageBase, BaseFoldable] # Frontier: added RecyclableItemClothBasic
   id: ClothingOuterStorageFoldableBase
   components:
@@ -135,6 +148,11 @@
         Piercing: 0.95
         Heat: 0.90
         Radiation: 0.25
+  - type: DamageOnShootProtection #imp
+    slots: OUTERCLOTHING
+    damageProtection:
+      flatReductions:
+        Blunt: 10
   - type: ToggleableClothing
     slot: head
   - type: ContainerContainer

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ BaseItem, StorePresetUplink ] #PDA's have uplinks so they have to inherit the data.
+  parent: [ BaseItem ]
   id: BasePDA
   name: PDA
   description: Personal Data Assistant.
@@ -132,6 +132,7 @@
         type: InstrumentBoundUserInterface
       enum.HealthAnalyzerUiKey.Key:
         type: HealthAnalyzerBoundUserInterface
+  - type: RemoteStore # PDAs can access uplinks so they need this component.
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -472,11 +473,12 @@
         - Cartridge
     preinstalled:
     - CrewManifestCartridge
-    - NotekeeperCartridge
-    - NanoTaskCartridge
+    - NotekeeperCartridge # Aurora's Song
+    - NanoTaskCartridge # Aurora's Song
     - NewsReaderCartridge
-    - AstroNavCartridge
-    - NanoChatCartridge # Auroras Song
+    - BountyContractsCartridge # Aurora's Song
+    - AstroNavCartridge # Aurora's Song
+    - NanoChatCartridge # Aurora's Song
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -542,6 +544,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - BountyContractsCartridge # Aurora's Song
     - AstroNavCartridge
     - NanoChatCartridge # Auroras Song
 
